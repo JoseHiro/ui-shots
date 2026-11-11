@@ -22,7 +22,7 @@ body{background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-
   user-select:none;-webkit-user-select:none}
 .card{position:relative;width:min(540px,100%);background:var(--card);border-radius:34px;padding:26px 24px 18px;
   box-shadow:0 1px 2px rgba(60,50,120,.05),0 28px 60px -20px rgba(90,70,170,.28)}
-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px}
 h1{margin:0;font-family:var(--display);font-size:27px;letter-spacing:-.01em;font-weight:600}
 .sub{margin:6px 0 0;color:var(--muted);font-size:14.5px}
 .tools{display:flex;gap:8px;align-items:center;flex-shrink:0}
@@ -33,7 +33,7 @@ h1{margin:0;font-family:var(--display);font-size:27px;letter-spacing:-.01em;font
 .pill.bump{animation:bump .5s cubic-bezier(.3,1.6,.5,1)}
 @keyframes bump{40%{transform:scale(1.18);background:#dcfaec;border-color:#8ee4c2}}
 
-.list{margin-top:18px;height:144px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.list{margin-top:16px;height:68px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
 .empty{height:68px;border:1.5px dashed #ddd8ef;border-radius:18px;display:flex;align-items:center;justify-content:center;color:#a7a3bd;font-size:13px;font-weight:600}
 .row{flex-shrink:0;height:68px;border:1px solid var(--line);border-radius:18px;padding:11px 16px 9px;background:#fff;box-shadow:0 6px 16px -10px rgba(15,23,42,.25);
   animation:rowIn .5s cubic-bezier(.2,1.2,.3,1)}
@@ -48,7 +48,7 @@ h1{margin:0;font-family:var(--display);font-size:27px;letter-spacing:-.01em;font
 .row-bot{display:flex;justify-content:space-between;font-size:11.5px;color:var(--muted)}
 .row.done .msg{color:#16946a;font-weight:700}
 
-.pitch{position:relative;margin-top:12px;height:440px;border:2px dashed #cfc8ec;border-radius:26px;overflow:hidden;touch-action:none;
+.pitch{position:relative;margin-top:14px;height:470px;border:2px dashed #cfc8ec;border-radius:26px;overflow:hidden;touch-action:none;
   background:repeating-linear-gradient(180deg,var(--grass-a) 0 44px,var(--grass-b) 44px 88px)}
 .pitch.dragover{border-color:var(--accent);box-shadow:inset 0 0 0 4px rgba(22,163,74,.15)}
 .chalk{position:absolute;border:2px solid var(--chalk);pointer-events:none;z-index:0}
@@ -100,22 +100,20 @@ h1{margin:0;font-family:var(--display);font-size:27px;letter-spacing:-.01em;font
 @keyframes bannerIn{0%{opacity:0;transform:scale(.3)}14%{opacity:1;transform:scale(1.08)}22%{transform:scale(1)}82%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.06)}}
 .hint{text-align:center;color:var(--muted);font-size:13px;margin:14px 0 2px;min-height:18px;transition:opacity .2s}
 canvas.fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:9;border-radius:28px}
-@media (max-width:440px){ .pitch{height:410px} .banner .t{font-size:60px} h1{font-size:22px} .card{padding:22px 16px 14px} }
+@media (max-width:440px){ .pitch{height:450px} .banner .t{font-size:60px} h1{font-size:22px} .card{padding:22px 16px 14px} }
 @media (prefers-reduced-motion:reduce){ .row,.banner,.net.bulge,.frame.shake{animation-duration:.01s} }
 </style>
 </head>
 <body>
 <main class="card" id="card">
   <header>
-    <div>
-      <h1>Upload files</h1>
-      <p class="sub">Drag and drop, or take the penalty.</p>
-    </div>
+    <h1>Upload files</h1>
     <div class="tools">
       <button class="icon-btn" id="sound" aria-label="Mute sound" title="Sound"></button>
       <div class="pill">Uploaded <b id="count">0</b></div>
     </div>
   </header>
+  <p class="sub">Drag and drop, or take the penalty.</p>
   <div class="list" id="list"><div class="empty" id="empty">Score a goal to upload your first file</div></div>
   <div class="pitch" id="pitch">
     <div id="lines"></div>
@@ -216,19 +214,19 @@ function layout(){
   W=pitch.clientWidth; H=pitch.clientHeight;
   const gw=Math.round(Math.min(300,W*0.64)), gh=Math.round(gw*0.38);
   G={w:gw,h:gh,x:Math.round((W-gw)/2),y:30}; G.line=G.y+G.h;
-  SPOT={x:W/2,y:H-84};
+  SPOT={x:W/2,y:H-112};
   Object.assign(netEl.style,{left:G.x+'px',top:G.y+'px',width:gw+'px',height:gh+'px'});
   Object.assign(frameEl.style,{left:(G.x-6)+'px',top:(G.y-6)+'px',width:(gw+12)+'px',height:(gh+6)+'px'});
   KH=Math.round(gh*0.8); KW=Math.round(KH*60/72);
   Object.assign(keeperEl.style,{width:KW+'px',height:KH+'px'});
-  const boxW=Math.min(W-28,gw+200), boxB=SPOT.y+34, arcR=64;
+  const boxW=Math.min(W-64,gw+130), boxB=SPOT.y+58, arcR=82;
   linesEl.innerHTML=
     chalk('',-4,G.line,W+8,0,'border-width:2px 0 0')+
     chalk('',(W-(gw+70))/2,G.line,gw+70,46,'border-top:0')+
     chalk('',(W-boxW)/2,G.line,boxW,boxB-G.line,'border-top:0')+
     chalk('',SPOT.x-arcR,SPOT.y-arcR,arcR*2,arcR*2,`border-radius:50%;clip-path:inset(${boxB-(SPOT.y-arcR)+2}px 0 0 0)`)+
     chalk('fill',SPOT.x-3.5,SPOT.y-3.5,7,7,'border-radius:50%');
-  caption.style.left=SPOT.x+'px'; caption.style.top=(SPOT.y+36)+'px';
+  caption.style.left=SPOT.x+'px'; caption.style.top=(SPOT.y+30)+'px';
   if(state==='idle') rest();
 }
 function placeBall(x,y,s,rot){ ball.x=x; ball.y=y; ballEl.style.transform=`translate(${x-30}px,${y-30}px) scale(${s}) rotate(${rot}deg)`; }
@@ -289,7 +287,7 @@ function resetKeeper(){
 
 /* ---------- drag & flick ---------- */
 let state='idle', grab=null, samples=[];
-const local=e=>{ const r=pitch.getBoundingClientRect(); return {x:e.clientX-r.left-pitch.clientLeft, y:e.clientY-r.top-pitch.clientTop}; };
+const local=e=>{ const r=pitch.getBoundingClientRect(), k=r.width/pitch.offsetWidth||1; return {x:(e.clientX-r.left)/k-pitch.clientLeft, y:(e.clientY-r.top)/k-pitch.clientTop}; };
 const setHint=t=>{ hintEl.textContent=t; };
 ballEl.addEventListener('pointerdown',e=>{
   if(state!=='idle') return; e.preventDefault(); ac();
@@ -399,7 +397,7 @@ function addUpload(f){
   row.style.setProperty('--c',COLORS[e]||'#64748b');
   row.innerHTML=`<div class="row-top"><span class="ext"></span><span class="name"></span><span class="status">0%</span></div><div class="bar"><i></i></div><div class="row-bot"><span class="msg">Uploading…</span><span class="size"></span></div>`;
   row.querySelector('.ext').textContent=e.toUpperCase().slice(0,4); row.querySelector('.name').textContent=f.name; row.querySelector('.size').textContent=fmt(f.size);
-  listEl.prepend(row); while(listEl.children.length>2) listEl.lastElementChild.remove();
+  listEl.prepend(row); while(listEl.children.length>1) listEl.lastElementChild.remove();
   const bar=row.querySelector('.bar i'), st=row.querySelector('.status');
   tween(1100,e=>{ bar.style.width=(e*100)+'%'; st.textContent=Math.round(e*100)+'%'; },t=>t<.5?2*t*t:1-Math.pow(-2*t+2,2)/2).then(()=>{
     row.classList.add('done'); st.textContent='Done'; row.querySelector('.msg').textContent='✓ File uploaded successfully';
@@ -411,7 +409,7 @@ function addUpload(f){
 /* ---------- confetti ---------- */
 const fx=$('fx'), cx2=fx.getContext('2d'); let parts=[], fxRun=false;
 function confetti(){
-  const dpr=window.devicePixelRatio||1, cr=card.getBoundingClientRect(), pr=pitch.getBoundingClientRect();
+  const dpr=(window.devicePixelRatio||1)*2, cr0=card.getBoundingClientRect(), k=cr0.width/card.offsetWidth||1, cr={width:card.offsetWidth,height:card.offsetHeight,left:cr0.left/k,top:cr0.top/k}, pr0=pitch.getBoundingClientRect(), pr={left:pr0.left/k,top:pr0.top/k};
   fx.width=cr.width*dpr; fx.height=cr.height*dpr; cx2.setTransform(dpr,0,0,dpr,0,0);
   const ox=pr.left-cr.left+W/2, oy=pr.top-cr.top+G.line+60;
   const cols=['#8b7cf6','#2fd197','#ffbf5e','#ff8fb1','#7cc8f8','#ffffff','#c4b5fd'];

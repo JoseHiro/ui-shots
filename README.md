@@ -7,6 +7,8 @@ Hosted with GitHub Pages straight from `main` (no build step).
 
 1. Create `designs/<slug>/index.html` (single file, no build).
 2. Add an entry to `DESIGNS` in `index.html`.
+
+Recording scripts live in `tools/`; finished videos go in `recordings/` (gitignored).
 3. Commit and push. Pages updates in about a minute.
 
 ## Recording tips
