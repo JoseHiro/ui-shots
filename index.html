@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>UI Shots</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f3f4f6;--card:#fff;--ink:#0f172a;--muted:#64748b;--line:#e5e7eb;--accent:#2563eb}
+@media (prefers-color-scheme:dark){:root{--bg:#0b0f17;--card:#141a24;--ink:#e5e7eb;--muted:#94a3b8;--line:#1f2937;--accent:#60a5fa;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;padding:40px max(16px,env(safe-area-inset-left,0px))}
+.wrap{max-width:960px;margin:0 auto}
+h1{font-size:32px;font-weight:800;letter-spacing:-.03em;margin:0}
+.lead{color:var(--muted);margin:6px 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+a.item{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;transition:transform .15s,border-color .15s}
+a.item:hover{transform:translateY(-2px);border-color:var(--accent)}
+.item h2{font-size:17px;margin:0 0 6px}
+.item p{margin:0 0 12px;color:var(--muted);font-size:14px;line-height:1.5}
+.meta{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.tag{border:1px solid var(--line);border-radius:999px;padding:2px 8px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>UI Shots</h1>
+  <p class="lead">Cute, modern UI animations made for TikTok.</p>
+  <div class="grid" id="grid"></div>
+</div>
+<script>
+// Add a new design: make designs/<slug>/index.html, then add one entry here (newest first).
+const DESIGNS = [
+  { slug: 'soccer-upload', title: 'Penalty Upload', desc: 'Flick a file past the goalkeeper to upload it. Goal, save, post and miss outcomes with sound.', date: '2026-11-11', tags: ['upload', 'game', 'drag'] },
+];
+document.getElementById('grid').innerHTML = DESIGNS.map(d => `
+  <a class="item" href="designs/${d.slug}/">
+    <h2>${d.title}</h2><p>${d.desc}</p>
+    <div class="meta"><span>${d.date}</span>${d.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+  </a>`).join('');
+</script>
+</body>
+</html>
