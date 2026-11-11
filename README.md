@@ -7,12 +7,11 @@ Hosted with GitHub Pages straight from `main` (no build step).
 
 1. Create `designs/<slug>/index.html` (single file, no build).
 2. Add an entry to `DESIGNS` in `index.html`.
-
-Recording scripts live in `tools/`; finished videos go in `recordings/` (gitignored).
 3. Commit and push. Pages updates in about a minute.
 
 ## Recording tips
 
+- `tools/` has Playwright scripts that record a 1080x1920 take; videos go in `recordings/` (gitignored).
 - Open the design on your iPhone via the Pages URL and use Screen Recording.
 - Turn sound on with the speaker button before recording.
 
