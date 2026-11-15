@@ -10,34 +10,18 @@ extension Color {
     }
 }
 
-enum Theme {
-    static let bg = Color(hex: 0xF3F1FA)
-    static let ink = Color(hex: 0x2B2840)
-    static let muted = Color(hex: 0x9C99B3)
-    static let lavender = Color(hex: 0x8B7CF6)
-    static let lavenderDeep = Color(hex: 0x6D5CE8)
-    static let mint = Color(hex: 0x1FB37F)
-    static let peach = Color(hex: 0xF5A524)
-    static let pink = Color(hex: 0xF7739B)
-    static let sky = Color(hex: 0x4AA8F0)
+func gradient(_ a: UInt32, _ b: UInt32) -> LinearGradient {
+    LinearGradient(colors: [Color(hex: a), Color(hex: b)], startPoint: .topLeading, endPoint: .bottomTrailing)
 }
 
 struct TabItem: Identifiable {
     let id: Int
     let title: String
     let icon: String
+    let iconOn: String
     let color: Color
-}
 
-let tabs: [TabItem] = [
-    TabItem(id: 0, title: "Home", icon: "house", color: Theme.lavender),
-    TabItem(id: 1, title: "Search", icon: "magnifyingglass", color: Theme.sky),
-    TabItem(id: 2, title: "Saved", icon: "heart", color: Theme.pink),
-    TabItem(id: 3, title: "Profile", icon: "person", color: Theme.mint),
-]
-
-func symbol(_ t: TabItem, filled: Bool) -> String {
-    filled && t.icon != "magnifyingglass" ? t.icon + ".fill" : t.icon
+    func symbol(_ on: Bool) -> String { on ? iconOn : icon }
 }
 
 enum BarStyle: Int, CaseIterable, Identifiable {
@@ -49,6 +33,14 @@ enum BarStyle: Int, CaseIterable, Identifiable {
         case .bubbleNotch: "Bubble Notch"
         case .softPill: "Soft Pill"
         case .colorChips: "Color Chips"
+        }
+    }
+    var app: String {
+        switch self {
+        case .liquidDock: "Wave · Music"
+        case .bubbleNotch: "Bento · Food"
+        case .softPill: "Pulse · Fitness"
+        case .colorChips: "Roam · Travel"
         }
     }
 }

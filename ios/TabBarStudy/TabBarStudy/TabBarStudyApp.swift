@@ -53,7 +53,7 @@ struct TouchDot: View {
     let pressed: Bool
     var body: some View {
         Circle()
-            .fill(Theme.ink.opacity(0.16))
+            .fill(Color(hex: 0x6B7280).opacity(0.3))
             .overlay(Circle().stroke(.white, lineWidth: 2.5))
             .frame(width: 46, height: 46)
             .shadow(color: .black.opacity(0.22), radius: 8, y: 3)

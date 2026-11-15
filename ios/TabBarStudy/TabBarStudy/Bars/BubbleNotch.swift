@@ -1,8 +1,14 @@
 import SwiftUI
 
-/// White bar with a curved notch that slides under a floating bubble.
+/// Bar with a curved notch that slides under a floating bubble.
 struct BubbleNotch: View {
     @Binding var selection: Int
+    let tabs: [TabItem]
+    let bar: Color
+    let bubble: LinearGradient
+    let glow: Color
+    let active: Color
+    let muted: Color
     private let barH: CGFloat = 70
 
     var body: some View {
@@ -11,23 +17,22 @@ struct BubbleNotch: View {
             let cx = cw * (CGFloat(selection) + 0.5)
             ZStack(alignment: .topLeading) {
                 NotchShape(x: cx)
-                    .fill(.white)
-                    .shadow(color: Theme.lavenderDeep.opacity(0.14), radius: 18, y: -2)
+                    .fill(bar)
+                    .shadow(color: glow.opacity(0.16), radius: 18, y: -2)
                     .ignoresSafeArea(edges: .bottom)
 
                 Circle()
-                    .fill(LinearGradient(colors: [Theme.lavender, Theme.lavenderDeep],
-                                         startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .fill(bubble)
                     .frame(width: 58, height: 58)
                     .overlay {
-                        Image(systemName: symbol(tabs[selection], filled: true))
+                        Image(systemName: tabs[selection].symbol(true))
                             .font(.system(size: 22, weight: .semibold))
                             .foregroundStyle(.white)
                             .id(selection)
                             .transition(.asymmetric(insertion: .scale(scale: 0.2).combined(with: .opacity),
                                                     removal: .opacity))
                     }
-                    .shadow(color: Theme.lavender.opacity(0.55), radius: 12, y: 6)
+                    .shadow(color: glow.opacity(0.5), radius: 12, y: 6)
                     .position(x: cx, y: 0)
 
                 HStack(spacing: 0) {
@@ -35,14 +40,14 @@ struct BubbleNotch: View {
                         let on = selection == t.id
                         Button { selection = t.id } label: {
                             VStack(spacing: 5) {
-                                Image(systemName: symbol(t, filled: false))
+                                Image(systemName: t.symbol(false))
                                     .font(.system(size: 21, weight: .medium))
-                                    .foregroundStyle(Theme.muted)
+                                    .foregroundStyle(muted)
                                     .opacity(on ? 0 : 1)
                                     .offset(y: on ? -18 : 0)
                                 Text(t.title)
                                     .font(.system(size: 11, weight: on ? .bold : .semibold, design: .rounded))
-                                    .foregroundStyle(on ? Theme.lavenderDeep : Theme.muted)
+                                    .foregroundStyle(on ? active : muted)
                                     .offset(y: on ? 6 : 0)
                             }
                             .frame(width: cw, height: barH - 8)
