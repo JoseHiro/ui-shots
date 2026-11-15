@@ -20,3 +20,4 @@ Hosted with GitHub Pages straight from `main` (no build step).
 | Slug | Title |
 | --- | --- |
 | `soccer-upload` | Penalty Upload: flick a file past the keeper to upload it |
+| `ios/TabBarStudy` | iOS Tab Bars: 4 SwiftUI tab bar styles (Liquid Dock, Bubble Notch, Soft Pill, Color Chips) |
