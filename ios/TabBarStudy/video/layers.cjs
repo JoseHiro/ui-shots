@@ -4,7 +4,7 @@ const bg=`${font}<style>html,body{margin:0;width:1080px;height:1920px;background
 h1{margin:0;position:absolute;top:34px;width:100%;text-align:center;font-size:76px;font-weight:700;color:#1B1B24;letter-spacing:-1px}
 p{margin:0;position:absolute;top:118px;width:100%;text-align:center;font-size:32px;font-weight:600;color:#6B7280}</style>
 <h1>iOS Tab Bars</h1><p>4 apps · 4 styles · SwiftUI</p>`;
-const names=["Liquid Dock","Bubble Notch","Soft Pill","Color Chips"], apps=["Music","Food","Fitness","Travel"], cols=["#FF4D8D","#FF5A1F","#16A865","#0EA5E9"];
+const names=["Liquid Glass","Brutal Notch","Volt Track","Boarding Pass"], apps=["Music","Food","Fitness","Travel"], cols=["#FF3D7F","#FF5533","#8DB51F","#D9442B"];
 const labels=`${font}<style>html,body{margin:0;width:1080px;height:1920px;background:transparent}
 .c{position:absolute;left:24px;display:flex;align-items:center;gap:12px;padding:10px 20px 10px 10px;background:transparent;font-family:Fredoka,sans-serif;font-weight:600;font-size:32px;color:#2B2840}
 .a{font-weight:500;color:#6B7280;font-size:26px}

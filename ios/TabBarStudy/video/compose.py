@@ -1,6 +1,6 @@
 import subprocess, sys
 F='/System/Library/Fonts/SFNSRounded.ttf'
-M=[1.983333,2.166667,2.328333,2.168333]
+M=[2.125,2.366667,2.18,2.226667]
 N=["Liquid Dock","Bubble Notch","Soft Pill","Color Chips"]
 D=10.8; R=34
 alpha=f"if(gt(abs(X-W/2),W/2-{R})*gt(abs(Y-H/2),H/2-{R}),if(lte(hypot(abs(X-W/2)-(W/2-{R}),abs(Y-H/2)-(H/2-{R})),{R}),255,0),255)"

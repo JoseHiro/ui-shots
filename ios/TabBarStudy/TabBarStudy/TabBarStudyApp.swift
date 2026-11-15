@@ -3,7 +3,7 @@ import SwiftUI
 @main
 struct TabBarStudyApp: App {
     // Launch with `-style 1...4 -demo YES` to auto-play a tap sequence for recording.
-    private let style = BarStyle(rawValue: UserDefaults.standard.integer(forKey: "style")) ?? .liquidDock
+    private let style = BarStyle(rawValue: UserDefaults.standard.integer(forKey: "style")) ?? .liquidGlass
     private let demo = UserDefaults.standard.bool(forKey: "demo")
 
     var body: some Scene {

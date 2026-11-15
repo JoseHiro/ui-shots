@@ -25,23 +25,22 @@ struct TabItem: Identifiable {
 }
 
 enum BarStyle: Int, CaseIterable, Identifiable {
-    case liquidDock = 1, bubbleNotch, softPill, colorChips
+    case liquidGlass = 1, brutalNotch, voltTrack, boardingPass
     var id: Int { rawValue }
     var name: String {
         switch self {
-        case .liquidDock: "Liquid Dock"
-        case .bubbleNotch: "Bubble Notch"
-        case .softPill: "Soft Pill"
-        case .colorChips: "Color Chips"
+        case .liquidGlass: "Liquid Glass"
+        case .brutalNotch: "Brutal Notch"
+        case .voltTrack: "Volt Track"
+        case .boardingPass: "Boarding Pass"
         }
     }
-    var app: String {
-        switch self {
-        case .liquidDock: "Wave · Music"
-        case .bubbleNotch: "Bento · Food"
-        case .softPill: "Pulse · Fitness"
-        case .colorChips: "Roam · Travel"
-        }
+}
+
+/// A flat, offset shadow in the neo-brutalist style.
+extension View {
+    func hardShadow<S: Shape>(_ shape: S, x: CGFloat = 4, y: CGFloat = 4) -> some View {
+        background(shape.fill(.black).offset(x: x, y: y))
     }
 }
 

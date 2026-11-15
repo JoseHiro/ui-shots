@@ -35,10 +35,10 @@ struct RootView: View {
 
     @ViewBuilder private var app: some View {
         switch style {
-        case .liquidDock: MusicApp(selection: $demo.selection)
-        case .bubbleNotch: FoodApp(selection: $demo.selection)
-        case .softPill: FitnessApp(selection: $demo.selection)
-        case .colorChips: TravelApp(selection: $demo.selection)
+        case .liquidGlass: MusicApp(selection: $demo.selection)
+        case .brutalNotch: FoodApp(selection: $demo.selection)
+        case .voltTrack: FitnessApp(selection: $demo.selection)
+        case .boardingPass: TravelApp(selection: $demo.selection)
         }
     }
 }

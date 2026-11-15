@@ -1,19 +1,18 @@
 import SwiftUI
 
-/// Floating glass capsule. The highlight's two edges move on different springs,
-/// so it stretches toward the new tab and snaps back like a drop of liquid.
+/// Floating dark-glass capsule with a specular rim. The highlight's two edges
+/// move on different springs, so it stretches toward the new tab and snaps
+/// back like a drop of liquid.
 struct LiquidDock: View {
     @Binding var selection: Int
     let tabs: [TabItem]
     let highlight: LinearGradient
     let glow: Color
-    let inactive: Color
-    let onHighlight: Color
 
     @State private var lead: CGFloat = 0
     @State private var trail: CGFloat = 0
     private let itemW: CGFloat = 70
-    private let itemH: CGFloat = 52
+    private let itemH: CGFloat = 54
     private let pad: CGFloat = 7
 
     var body: some View {
@@ -23,9 +22,9 @@ struct LiquidDock: View {
                 Button { selection = t.id } label: {
                     Image(systemName: t.symbol(on))
                         .font(.system(size: 21, weight: .semibold))
-                        .foregroundStyle(on ? onHighlight : inactive)
+                        .foregroundStyle(on ? .white : .white.opacity(0.5))
                         .contentTransition(.symbolEffect(.replace))
-                        .scaleEffect(on ? 1.06 : 1)
+                        .scaleEffect(on ? 1.08 : 1)
                         .frame(width: itemW, height: itemH)
                         .contentShape(Rectangle())
                 }
@@ -38,13 +37,22 @@ struct LiquidDock: View {
         .background(alignment: .leading) {
             Capsule()
                 .fill(highlight)
+                .overlay(Capsule().fill(LinearGradient(colors: [.white.opacity(0.45), .clear],
+                                                       startPoint: .top, endPoint: .center)))
                 .frame(width: trail - lead + itemW, height: itemH)
-                .shadow(color: glow.opacity(0.6), radius: 14, y: 4)
+                .shadow(color: glow.opacity(0.75), radius: 16, y: 4)
                 .offset(x: pad + lead)
         }
         .background(.ultraThinMaterial, in: Capsule())
-        .overlay(Capsule().stroke(.white.opacity(0.14), lineWidth: 1))
-        .shadow(color: .black.opacity(0.35), radius: 24, y: 12)
+        .background(Capsule().fill(Color.white.opacity(0.04)))
+        .overlay(
+            Capsule().strokeBorder(
+                LinearGradient(colors: [.white.opacity(0.55), .white.opacity(0.05), .white.opacity(0.18)],
+                               startPoint: .top, endPoint: .bottom),
+                lineWidth: 1.2)
+        )
+        .shadow(color: .black.opacity(0.5), radius: 30, y: 16)
+        .environment(\.colorScheme, .dark)
         .onAppear {
             lead = x(selection)
             trail = lead
