@@ -19,17 +19,19 @@ const scene = (i) => `${font}<style>${base}
 const bg = `<style>${base}body{${studio}}.p{position:absolute;left:${P.x}px;top:${P.y}px;width:${P.w}px;height:${P.h}px;border-radius:${P.r}px;
 box-shadow:0 40px 90px rgba(40,30,10,.22),0 10px 24px rgba(40,30,10,.12)}</style><div class="p"></div>`;
 const mask = (w, h, r) => `<style>html,body{margin:0;width:${w}px;height:${h}px;background:#000}div{width:${w}px;height:${h}px;border-radius:${r}px;background:#fff}</style><div></div>`;
-const E = { w: 360, h: 783, r: 50, xs: [160, 560], ys: [236, 1062] };
+const E = { w: 380, h: 827, r: 52, xs: [140, 560], ys: [168, 1031] };
 const end = `${font}<style>${base}body{${studio}}
-h1{margin:0;position:absolute;top:64px;width:100%;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:92px;color:#16151A;line-height:1}
+h1{margin:0;position:absolute;top:44px;width:100%;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:84px;color:#16151A;line-height:1}
 .p{position:absolute;width:${E.w}px;height:${E.h}px;border-radius:${E.r}px;box-shadow:0 26px 60px rgba(40,30,10,.22)}
 .n{position:absolute;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:26px;box-shadow:0 6px 16px rgba(0,0,0,.2)}
 </style><h1>Which one would you ship?</h1>` +
   boards.map((b, i) => { const x = E.xs[i % 2], y = E.ys[i >> 1];
     return `<div class="p" style="left:${x}px;top:${y}px"></div>`; }).join('');
-const badges = `<style>${base}.n{position:absolute;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:#fff;font-family:Inter;font-weight:700;font-size:27px;box-shadow:0 6px 16px rgba(0,0,0,.25);border:3px solid #fff}</style>${font}` +
+const badges = `${font}<style>${base}.n{position:absolute;height:50px;padding:0 20px 0 6px;border-radius:25px;display:flex;align-items:center;gap:10px;
+background:#fff;font-family:Inter;font-weight:600;font-size:24px;color:#16151A;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.n i{font-style:normal;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:20px}</style>` +
   boards.map((b, i) => { const x = E.xs[i % 2], y = E.ys[i >> 1];
-    return `<div class="n" style="left:${x - 18}px;top:${y - 18}px;background:${b[2]}">${i + 1}</div>`; }).join('');
+    return `<div class="n" style="left:${x + E.w / 2}px;top:${y + 8}px;transform:translateX(-50%)"><i style="background:${b[2]}">${i + 1}</i>${b[0]}</div>`; }).join('');
 (async () => {
   const b = await chromium.launch();
   const shot = async (html, path, vp, transparent) => {

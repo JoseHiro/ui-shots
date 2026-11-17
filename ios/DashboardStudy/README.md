@@ -19,5 +19,5 @@ xcodebuild -project DashboardStudy.xcodeproj -scheme DashboardStudy -destination
 video/capture.sh            # simulator must be booted
 python3 video/sync.py       # update START in compose.py with the last column
 NODE_PATH=<path to node_modules with playwright> node video/layers.cjs   # run inside video/
-python3 video/compose.py    # -> video/dashboards.mp4
+python3 video/compose.py    # -> video/dashboards.mp4 (2x2 grid, all four playing together)
 ```
