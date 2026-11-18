@@ -22,3 +22,4 @@ Hosted with GitHub Pages straight from `main` (no build step).
 | `soccer-upload` | Penalty Upload: flick a file past the keeper to upload it |
 | `ios/TabBarStudy` | iOS Tab Bars: 4 art-directed apps (Wave music, Bento food, Pulse fitness, Roam travel), each with its own SwiftUI tab bar |
 | `ios/DashboardStudy` | iOS Dashboards: 4 SwiftUI dashboards (Ledger banking, Hearth home energy, Lull sleep, Reach creator analytics) with chart morphing and scrubbing |
+| `ios/HealthStudy` | iOS Health Apps: 4 trackers in 4 styles (SET gym log as retro LCD, Sip hydration in clay, Macro nutrition as Bauhaus, Ma mindfulness in sumi ink) |
