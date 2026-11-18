@@ -37,9 +37,18 @@ final class Demo: ObservableObject {
         try? await Task.sleep(for: .seconds(2.3))
         await tap("seg1") { self.setRange(1) }
         try? await Task.sleep(for: .seconds(1.0))
-        await scrubChart()
+        await scrubChart([0.16, 0.88, 0.58], steps: [84, 38])
         try? await Task.sleep(for: .seconds(0.35))
         await tap("seg2") { self.setRange(2) }
+        try? await Task.sleep(for: .seconds(1.4))
+        await scrubChart([0.9, 0.22, 0.5], steps: [90, 40])
+        try? await Task.sleep(for: .seconds(0.6))
+        await tap("seg0") { self.setRange(0) }
+        try? await Task.sleep(for: .seconds(1.4))
+        await scrubChart([0.3, 0.74], steps: [70])
+        try? await Task.sleep(for: .seconds(1.2))
+        // Leave the way it came in, so the video loops back to its first frame.
+        appeared = false
     }
 
     private func tap(_ id: String, action: @escaping () -> Void) async {
@@ -53,14 +62,15 @@ final class Demo: ObservableObject {
         withAnimation(.easeOut(duration: 0.2)) { touch = nil }
     }
 
-    private func scrubChart() async {
+    private func scrubChart(_ stops: [CGFloat], steps: [Int]) async {
         guard let f = frames["chart"] else { return }
         let pt = { (s: CGFloat) in CGPoint(x: f.minX + s * f.width, y: f.minY + f.height * 0.82) }
-        withAnimation(.easeOut(duration: 0.12)) { touch = pt(0.16); pressed = true }
-        scrub = 0.16
+        withAnimation(.easeOut(duration: 0.12)) { touch = pt(stops[0]); pressed = true }
+        scrub = stops[0]
         try? await Task.sleep(for: .milliseconds(180))
-        await glide(from: 0.16, to: 0.88, steps: 84, pt: pt)
-        await glide(from: 0.88, to: 0.58, steps: 38, pt: pt)
+        for k in 0..<steps.count {
+            await glide(from: stops[k], to: stops[k + 1], steps: steps[k], pt: pt)
+        }
         try? await Task.sleep(for: .milliseconds(450))
         withAnimation(.easeOut(duration: 0.25)) { pressed = false; scrub = nil }
         try? await Task.sleep(for: .milliseconds(120))

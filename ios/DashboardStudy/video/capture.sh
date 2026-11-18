@@ -11,7 +11,7 @@ for s in 1 2 3 4; do
   /bin/sleep 0.4
   xcrun simctl io $D recordVideo --codec=h264 --force $OUT/raw$s.mp4 2>/dev/null &
   pid=$!
-  /bin/sleep 13
+  /bin/sleep 24
   kill -INT $pid; wait $pid
   echo "style $s done"
 done

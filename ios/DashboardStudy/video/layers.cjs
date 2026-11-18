@@ -21,7 +21,7 @@ box-shadow:0 40px 90px rgba(40,30,10,.22),0 10px 24px rgba(40,30,10,.12)}</style
 const mask = (w, h, r) => `<style>html,body{margin:0;width:${w}px;height:${h}px;background:#000}div{width:${w}px;height:${h}px;border-radius:${r}px;background:#fff}</style><div></div>`;
 const E = { w: 380, h: 827, r: 52, xs: [140, 560], ys: [168, 1031] };
 const end = `${font}<style>${base}body{${studio}}
-h1{margin:0;position:absolute;top:44px;width:100%;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:84px;color:#16151A;line-height:1}
+h1{margin:0;position:absolute;top:66px;width:100%;text-align:center;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:58px;color:#16151A;line-height:1}
 .p{position:absolute;width:${E.w}px;height:${E.h}px;border-radius:${E.r}px;box-shadow:0 26px 60px rgba(40,30,10,.22)}
 .n{position:absolute;width:56px;height:56px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:26px;box-shadow:0 6px 16px rgba(0,0,0,.2)}
 </style><h1>Which one would you ship?</h1>` +
