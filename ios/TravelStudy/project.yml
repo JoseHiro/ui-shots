@@ -1,0 +1,19 @@
+name: TravelStudy
+options:
+  bundleIdPrefix: com.josehiro
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  TravelStudy:
+    type: application
+    platform: iOS
+    sources: [TravelStudy]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.josehiro.TravelStudy
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIStatusBarStyle: UIStatusBarStyleDefault
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: NO
