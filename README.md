@@ -25,3 +25,4 @@ Hosted with GitHub Pages straight from `main` (no build step).
 | `ios/HealthStudy` | iOS Health Apps: 4 trackers in 4 styles (SET gym log as retro LCD, Sip hydration in clay, Macro nutrition as Bauhaus, Ma mindfulness in sumi ink) |
 | `ios/MusicStudy` | iOS Music Players: 4 players in 4 styles (Platter vinyl turntable, Tape 80s cassette deck, Mono minimal, Pulse neon synthwave) |
 | `ios/TravelStudy` | iOS Travel Apps: 4 apps in 4 styles (Orbit 3D SceneKit globe, Gate split-flap airport board, Isle isometric island, Postcard scrapbook) |
+| `ios/MessageStudy` | iOS Messaging Apps: 4 apps in 4 styles (Bubble bouncy chat, Letter wax-sealed snail mail, Terminal CRT CLI chat, Pager 90s Japanese pocket bell) |
