@@ -1,0 +1,19 @@
+name: BeatStudy
+options:
+  bundleIdPrefix: com.josehiro
+  deploymentTarget:
+    iOS: "17.0"
+targets:
+  BeatStudy:
+    type: application
+    platform: iOS
+    sources: [BeatStudy]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.josehiro.BeatStudy
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_UIStatusBarStyle: UIStatusBarStyleDefault
+        TARGETED_DEVICE_FAMILY: "1"
+        SWIFT_VERSION: "5.0"
+        CODE_SIGNING_ALLOWED: NO
