@@ -27,3 +27,4 @@ Hosted with GitHub Pages straight from `main` (no build step).
 | `ios/TravelStudy` | iOS Travel Apps: 4 apps in 4 styles (Orbit 3D SceneKit globe, Gate split-flap airport board, Isle isometric island, Postcard scrapbook) |
 | `ios/MessageStudy` | iOS Messaging Apps: 4 apps in 4 styles (Bubble bouncy chat, Letter wax-sealed snail mail, Terminal CRT CLI chat, Pager 90s Japanese pocket bell) |
 | `ios/BeatStudy` | iOS Beat Apps: 4 music apps that move to the beat (Water turntable ripples, Sand Chladni figures, Ferro ferrofluid spikes, Fire fireplace) |
+| `ios/LiquidStudy` | iOS Liquid Players: 4 music players in 4 liquids (Water swimming pool with caustics, Mercury merging chrome droplets, Honey dripping over a comb, Ink suminagashi marbling) |

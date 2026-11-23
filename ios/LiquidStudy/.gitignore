@@ -1,0 +1,5 @@
+build/
+*.xcodeproj/
+video/*.mp4
+video/*.png
+video/*.wav
